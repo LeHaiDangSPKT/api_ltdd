@@ -7,11 +7,11 @@ const Notification = new Schema(
     userId: { type: String },
     type: { type: String },
     message: { type: String },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("bill", Bill);
+module.exports = mongoose.model("notification", Notification);

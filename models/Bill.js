@@ -9,7 +9,7 @@ const Bill = new Schema(
     phone: { type: String },
     address: { type: String },
     date: { type: String },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,

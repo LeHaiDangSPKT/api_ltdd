@@ -8,7 +8,7 @@ const Review = new Schema(
     productId: { type: String },
     content: { type: String },
     time: { type: String },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,

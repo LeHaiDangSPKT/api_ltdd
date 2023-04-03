@@ -9,7 +9,7 @@ const Store = new Schema(
     email: { type: String },
     image: { type: String },
     address: { type: String },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,

@@ -12,7 +12,7 @@ const Product = new Schema(
     defaultImage: { type: Number },
     detail: { type: String },
     star: { type: Number },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,

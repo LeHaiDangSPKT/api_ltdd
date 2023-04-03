@@ -12,7 +12,7 @@ const User = new Schema(
     avatar: { type: String },
     facebook: { type: String },
     zalo: { type: String },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,

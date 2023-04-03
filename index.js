@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
-// const route = require("./routes");
+const route = require("./routes");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -44,4 +44,4 @@ mongoose
     })
   )
   .catch((err) => console.log(err));
-// route(app);
+route(app);

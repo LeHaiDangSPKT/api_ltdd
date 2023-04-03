@@ -6,7 +6,7 @@ const ProductType = new Schema(
   {
     name: { type: String },
     image: { type: String },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,

@@ -7,7 +7,7 @@ const Cart = new Schema(
     userId: { type: String },
     productId: { type: String },
     quantity: { type: Number },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,

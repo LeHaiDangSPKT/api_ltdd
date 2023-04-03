@@ -7,7 +7,7 @@ const Promo = new Schema(
     productId: { type: String },
     type: { type: String },
     expirationDate: { type: String },
-    status: { type: String },
+    state: { type: Boolean },
   },
   {
     timestamps: true,
