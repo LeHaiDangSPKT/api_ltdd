@@ -21,6 +21,23 @@ class Account {
         res.json(err);
       });
   }
+  
+  // [POST] /account/sign-up
+    signup(req, res, next) {
+        AccountModel.findOne({ email: req.body.email })
+            .then((account) => {
+                if (account) res.status(404).send("Email đã tồn tại");
+                else {
+                    const account = req.body;
+                    const newAccount = new AccountModel(account);
+                    newAccount.save();
+                    res.json(account);
+                }
+            })
+            .catch((err) => {
+                res.json(err);
+            });
+    }
 
   update(req, res, next) {
     AccountModel.findByIdAndUpdate(req.params.id, req.body)
