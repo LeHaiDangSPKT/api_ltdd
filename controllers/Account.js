@@ -31,7 +31,7 @@ class Account {
                     const account = req.body;
                     const newAccount = new AccountModel(account);
                     newAccount.save();
-                    res.json(account);
+                    res.json(newAccount);
                 }
             })
             .catch((err) => {
