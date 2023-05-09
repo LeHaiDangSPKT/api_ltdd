@@ -13,7 +13,7 @@ class Account {
   }
   // [POST] /account/login
   login(req, res, next) {
-    AccountModel.findOne({ email: req.body.email, password: req.body.password }, {__v: 0})
+    AccountModel.findOne({ email: req.body.email, password: req.body.password }, {__v: 0, createdAt: 0, updatedAt: 0})
       .then((result) => {
         res.json(result);
       })
