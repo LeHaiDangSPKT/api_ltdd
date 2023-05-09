@@ -10,7 +10,7 @@ const User = new Schema(
     phone: { type: String },
     address: { type: String },
     avatar: { type: String },
-    state: { type: Boolean },
+    state: { type: Boolean, default: true },
   },
   {
     timestamps: true,
