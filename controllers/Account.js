@@ -38,6 +38,7 @@ class Account {
                 res.json(err);
             });
     }
+  
 
   update(req, res, next) {
     AccountModel.findByIdAndUpdate(req.params.id, req.body)
