@@ -9,5 +9,6 @@ router.get("/getProductByTypeId/:id", ProductController.getProductByTypeId);
 router.get("/getTopProducts", ProductController.getTopProducts);
 router.put("/update/:id", ProductController.update);
 router.delete("/delete/:id", ProductController.delete);
+router.post("/getProductByListTypeId", ProductController.getProductByListTypeId);
 
 module.exports = router;
