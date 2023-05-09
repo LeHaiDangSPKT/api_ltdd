@@ -28,7 +28,7 @@ class Product {
     .catch((err) => {
       res.json(err);
     });
-});
+};
   getProductByTypeId(req, res, next) {
     ProductModel.find({ typeId: req.params.id })
       .then((result) => {
