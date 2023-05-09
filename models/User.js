@@ -10,8 +10,6 @@ const User = new Schema(
     phone: { type: String },
     address: { type: String },
     avatar: { type: String },
-    facebook: { type: String },
-    zalo: { type: String },
     state: { type: Boolean },
   },
   {
