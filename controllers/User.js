@@ -22,7 +22,7 @@ class User {
             address,
             avatar,
             state: true,
-        })
+        }, {__v: 0, createdAt: 0, updatedAt: 0})
             .then((user) => {
                 res.json(user);
             })
