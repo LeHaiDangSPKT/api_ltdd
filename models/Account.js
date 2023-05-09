@@ -8,7 +8,7 @@ const Account = new Schema(
     email: { type: String },
     password: { type: String },
     roleID: { type: String },
-    state: { type: Boolean },
+    state: { type: Boolean, default: true },
   },
   {
     timestamps: true,
