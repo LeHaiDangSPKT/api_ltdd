@@ -19,6 +19,16 @@ class Product {
         res.json(err);
       });
   }
+  getProductByListTypeId(req, res, next) {
+  const { listTypeId } = req.body;
+  ProductModel.find({ typeId: { $in: listTypeId } })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
   getProductByTypeId(req, res, next) {
     ProductModel.find({ typeId: req.params.id })
       .then((result) => {
