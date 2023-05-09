@@ -13,15 +13,14 @@ class User {
   
   // [POST] /user/addUser
     addUser(req, res, next) {
-        const { idUser, idToy, image, nameToy, price, quantity, totalPrice } = req.body;
+        const { accountId, fullname, sex, phone, address, avatar, state } = req.body;
         UserModel.create({
-            idUser,
-            idToy,
-            image,
-            nameToy,
-            price,
-            quantity,
-            totalPrice,
+            accountId,
+            fullname,
+            sex,
+            phone,
+            address,
+            avatar,
             state: true,
         })
             .then((user) => {
