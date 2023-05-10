@@ -85,7 +85,7 @@ class Product {
 
   getProductByTypeName(req, res, next) {
     const { typeName } = req.body;
-    ProductTypeModel.findOne({ name: typeName })
+    ProductTypeModel.findOne({ name: { $regex: typeName, $options: "i" } })
       .then((result) => {
         ProductModel.find({ typeId: result._id })
           .then((result) => {
