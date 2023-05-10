@@ -1,4 +1,5 @@
 const ProductModel = require("../models/Product");
+const ProductTypeModel = require("../models/ProductType");
 
 class Product {
   getAllProducts(req, res, next) {
@@ -20,15 +21,15 @@ class Product {
       });
   }
   getProductByListTypeId(req, res, next) {
-  const { listTypeId } = req.body;
-  ProductModel.find({ typeId: { $in: listTypeId } })
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-};
+    const { listTypeId } = req.body;
+    ProductModel.find({ typeId: { $in: listTypeId } })
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
   getProductByTypeId(req, res, next) {
     ProductModel.find({ typeId: req.params.id })
       .then((result) => {
@@ -76,6 +77,23 @@ class Product {
     })
       .then((result) => {
         res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
+
+  getProductByTypeName(req, res, next) {
+    const { typeName } = req.body;
+    ProductTypeModel.findOne({ name: typeName })
+      .then((result) => {
+        ProductModel.find({ typeId: result._id })
+          .then((result) => {
+            res.json(result);
+          })
+          .catch((err) => {
+            res.json(err);
+          });
       })
       .catch((err) => {
         res.json(err);
