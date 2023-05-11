@@ -43,5 +43,11 @@ class Cart {
         res.json(err);
       });
   }
+
+  addCart(req, res, next) {
+    const cart = new CartModel(req.body);
+    cart.save();
+    res.json(cart);
+  }
 }
 module.exports = new Cart();
