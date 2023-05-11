@@ -1,8 +1,8 @@
 const NotificationModel = require("../models/Notification");
 
 class Notification {
-  getAllNotifications(req, res, next) {
-    NotificationModel.find({ userId: req.body.userId, state: false })
+  getAllNotificationsByUserId(req, res, next) {
+    NotificationModel.find({ userId: req.params.userId, state: true })
       .then((result) => {
         res.json(result);
       })
@@ -18,6 +18,12 @@ class Notification {
       .catch((err) => {
         res.json(err);
       });
+  }
+
+  add(req, res, next) {
+    const notification = new NotificationModel(req.body);
+    notification.save();
+    res.json(notification);
   }
 }
 module.exports = new Notification();
