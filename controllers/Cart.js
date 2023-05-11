@@ -21,15 +21,13 @@ class Cart {
   }
 
   // Get cart and price, name of productId
-  getCart(req, res, next) {
+  getCartByProductId(req, res, next) {
     const productId = req.params.productId;
     Promise.all([
       ProductModel.findOne({ _id: productId }, { price: 1, name: 1 }),
       CartModel.findOne({ productId: productId }),
     ])
       .then(([product, cart]) => {
-        console.log(product, cart);
-        // res.json({ price: product.price, name: product.name, cart });
         res.json({
           product,
           _id: cart._id,
@@ -48,6 +46,16 @@ class Cart {
     const cart = new CartModel(req.body);
     cart.save();
     res.json(cart);
+  }
+  getCartByUserId(req, res, next) {
+    const userId = req.params.userId;
+    CartModel.findOne({ userId: userId })
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
   }
 }
 module.exports = new Cart();
