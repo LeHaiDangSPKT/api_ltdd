@@ -11,8 +11,8 @@ class Promo {
       });
   }
   getTopPromos(req, res, next) {
-    PromoModel.find({})
-      .limit(+req.body.limit)
+    PromoModel.find({}, { updatedAt: 0, createdAt: 0, __v: 0 })
+      .limit(parseInt(req.query.limit))
       .then((result) => {
         res.json(result);
       })
