@@ -24,12 +24,20 @@ class Cart {
   getCart(req, res, next) {
     const productId = req.params.productId;
     Promise.all([
-      ProductModel.findOne({ _id: productId }),
-      CartModel.find({ productId: productId }),
+      ProductModel.findOne({ _id: productId }, { price: 1, name: 1 }),
+      CartModel.findOne({ productId: productId }),
     ])
       .then(([product, cart]) => {
         console.log(product, cart);
-        res.json({ price: product.price, name: product.name, cart });
+        // res.json({ price: product.price, name: product.name, cart });
+        res.json({
+          product,
+          _id: cart._id,
+          userId: cart.userId,
+          productId: cart.productId,
+          quantity: cart.quantity,
+          state: cart.state,
+        });
       })
       .catch((err) => {
         res.json(err);
