@@ -49,10 +49,7 @@ class Cart {
   }
   getCartByUserId(req, res, next) {
     const userId = req.params.userId;
-    CartModel.findOne(
-      { userId: userId },
-      { updatedAt: 0, createdAt: 0, __v: 0 }
-    )
+    CartModel.find({ userId: userId }, { updatedAt: 0, createdAt: 0, __v: 0 })
       .then((result) => {
         res.json(result);
       })
