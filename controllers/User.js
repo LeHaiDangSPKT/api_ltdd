@@ -2,7 +2,7 @@ const UserModel = require("../models/User");
 
 class User {
   getUserByAccountId(req, res, next) {
-    UserModel.find(
+    UserModel.findOne(
       { accountId: req.params.accountId },
       { __v: 0, createdAt: 0, updatedAt: 0 }
     )
