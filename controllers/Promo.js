@@ -23,6 +23,7 @@ class Promo {
 
   add(req, res, next) {
     const newPromo = new PromoModel(req.body);
+    console.log(newPromo);
     newPromo
       .save()
       .then((result) => {
