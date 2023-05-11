@@ -10,8 +10,9 @@ class Notification {
         res.json(err);
       });
   }
+  //Change state to false
   update(req, res, next) {
-    NotificationModel.findByIdAndUpdate(req.params.id, req.body)
+    NotificationModel.findByIdAndUpdate(req.params.id, { state: false })
       .then((result) => {
         res.json(result);
       })
