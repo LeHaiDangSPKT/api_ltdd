@@ -8,8 +8,7 @@ const Bill = new Schema(
     cartId: { type: String },
     phone: { type: String },
     address: { type: String },
-    date: { type: String },
-    state: { type: Boolean },
+    date: { type: Date, default: Date.now },
   },
   {
     timestamps: true,
