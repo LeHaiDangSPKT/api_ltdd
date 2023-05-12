@@ -9,7 +9,7 @@ const Bill = new Schema(
     phone: { type: String },
     address: { type: String },
     price: { type: Number },
-    quatity: { type: Number },
+    quantity: { type: Number },
     date: { type: Date, default: Date.now },
   },
   {
