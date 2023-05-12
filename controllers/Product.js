@@ -104,11 +104,32 @@ class Product {
 
   getDiscountProductByName(req, res, next) {
     const name = req.query.name;
-    ProductModel.find({ name: { $regex: name, $options: "i" } })
+
+    ProductModel.find({})
       .then(async (result) => {
         var checkId = [];
+        var result_clean = result.map((item) => {
+          return {
+            _id: item._id,
+            name: item.name
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, ""),
+            price: item.price,
+            image: item.image,
+            typeId: item.typeId,
+          };
+        });
+        result_clean = result_clean.filter((item) =>
+          item.name.includes(
+            name
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+          )
+        );
         await Promise.all(
-          result.map(async (item) => {
+          result_clean.map(async (item) => {
             const result = await DiscountModel.findOne({
               productId: item._id.toString(),
             });
