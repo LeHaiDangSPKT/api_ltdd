@@ -1,5 +1,6 @@
 const ProductModel = require("../models/Product");
 const ProductTypeModel = require("../models/ProductType");
+const DiscountModel = require("../models/Discount");
 
 class Product {
   getAllProducts(req, res, next) {
@@ -95,6 +96,31 @@ class Product {
           .catch((err) => {
             res.json(err);
           });
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
+
+  getDiscountProductByName(req, res, next) {
+    const name = req.query.name;
+    ProductModel.find({ name: { $regex: name, $options: "i" } })
+      .then(async (result) => {
+        var checkId = [];
+        await Promise.all(
+          result.map(async (item) => {
+            const result = await DiscountModel.findOne({
+              productId: item._id.toString(),
+            });
+            if (result) {
+              checkId.push(result.productId);
+            }
+          })
+        );
+
+        res.json(
+          result.filter((item) => checkId.includes(item._id.toString()))
+        );
       })
       .catch((err) => {
         res.json(err);

@@ -14,5 +14,9 @@ router.post(
   ProductController.getProductByListTypeId
 );
 router.post("/getProductByTypeName", ProductController.getProductByTypeName);
+router.get(
+  "/getDiscountProductByName",
+  ProductController.getDiscountProductByName
+);
 
 module.exports = router;
