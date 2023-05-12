@@ -8,6 +8,8 @@ const Bill = new Schema(
     cartId: { type: String },
     phone: { type: String },
     address: { type: String },
+    price: { type: Number },
+    quatity: { type: Number },
     date: { type: Date, default: Date.now },
   },
   {
