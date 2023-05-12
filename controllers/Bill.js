@@ -28,5 +28,10 @@ class Bill {
         res.json(err);
       });
   }
+  add(req, res, next) {
+    const bill = new BillModel(req.body);
+    bill.save();
+    res.json(bill);
+  }
 }
 module.exports = new Bill();
