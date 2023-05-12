@@ -8,9 +8,6 @@ const Discount = new Schema(
     expirationDate: { type: String },
     value: { type: Number },
     state: { type: Boolean },
-  },
-  {
-    timestamps: true,
   }
 );
 
