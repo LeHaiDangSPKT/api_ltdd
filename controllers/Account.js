@@ -13,7 +13,10 @@ class Account {
   }
   // [POST] /account/login
   login(req, res, next) {
-    AccountModel.findOne({ email: req.body.email, password: req.body.password }, {__v: 0, createdAt: 0, updatedAt: 0})
+    AccountModel.findOne(
+      { email: req.body.email, password: req.body.password },
+      { __v: 0, createdAt: 0, updatedAt: 0 }
+    )
       .then((result) => {
         res.json(result);
       })
@@ -21,27 +24,36 @@ class Account {
         res.json(err);
       });
   }
-  
+
   // [POST] /account/sign-up
-    signup(req, res, next) {
-        AccountModel.findOne({ email: req.body.email })
-            .then((account) => {
-                if (account) res.status(404).send("Email đã tồn tại");
-                else {
-                    const account = req.body;
-                    const newAccount = new AccountModel(account);
-                    newAccount.save();
-                    res.json(newAccount);
-                }
-            })
-            .catch((err) => {
-                res.json(err);
-            });
-    }
-  
+  signup(req, res, next) {
+    AccountModel.findOne({ email: req.body.email })
+      .then((account) => {
+        if (account) res.status(404).send("Email đã tồn tại");
+        else {
+          const account = req.body;
+          const newAccount = new AccountModel(account);
+          newAccount.save();
+          res.json(newAccount);
+        }
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
 
   update(req, res, next) {
     AccountModel.findByIdAndUpdate(req.params.id, req.body)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
+
+  getAccountByEmail(req, res, next) {
+    AccountModel.findOne({ email: req.query.email }, { email: 1, password: 1 })
       .then((result) => {
         res.json(result);
       })
