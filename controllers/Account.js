@@ -53,7 +53,7 @@ class Account {
   }
 
   getAccountByEmail(req, res, next) {
-    AccountModel.findOne({ email: req.query.email }, { email: 1, password: 1 })
+    AccountModel.findOne({ email: req.params.email }, { email: 1, password: 1 })
       .then((result) => {
         res.json(result);
       })
