@@ -1,7 +1,7 @@
 const ReviewModel = require("../models/Review");
 
 class Review {
-  getAllReviews(req, res, next) {
+  getReviews(req, res, next) {
     ReviewModel.find({ _id: req.param.id })
       .then((result) => {
         res.json(result);
