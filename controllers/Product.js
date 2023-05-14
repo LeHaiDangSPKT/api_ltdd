@@ -73,8 +73,8 @@ class Product {
   search(req, res, next) {
     ProductModel.find({
       $or: [
-        { name: { $regex: req.body.text, $options: "i" } },
-        { type: { $regex: req.body.text, $options: "i" } },
+        { name: { $regex: req.query.search, $options: "i" } },
+        { type: { $regex: req.query.search, $options: "i" } },
       ],
     })
       .then((result) => {
