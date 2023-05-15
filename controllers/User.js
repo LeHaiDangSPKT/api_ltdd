@@ -62,5 +62,17 @@ class User {
         res.json(err);
       });
   }
+
+  addProductLove(req, res, next) {
+    UserModel.findByIdAndUpdate(req.params.id, {
+      $push: { productLove: req.body.productLove },
+    })
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
 }
 module.exports = new User();
