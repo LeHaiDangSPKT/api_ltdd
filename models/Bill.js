@@ -12,7 +12,7 @@ const Bill = new Schema(
     price: { type: Number },
     quantity: { type: Number },
     date: { type: Date, default: Date.now },
-    status: { type: String, default: "Uncheck" },
+    status: { type: String, default: "UncheckOrder" },
   },
   {
     timestamps: true,
