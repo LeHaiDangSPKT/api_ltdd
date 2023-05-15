@@ -4,6 +4,7 @@ const CartModel = require("../models/Cart");
 class Bill {
   getAllBillByUserId(req, res, next) {
     BillModel.find({ userId: req.params.userId })
+      .sort({ date: -1 })
       .then((result) => {
         res.json(result);
       })
@@ -30,7 +31,7 @@ class Bill {
   }
 
   update(req, res, next) {
-    BillModel.updateOne({ _id: req.params.id }, req.body)
+    BillModel.findByIdAndUpdate({ _id: req.params.id }, req.body)
       .then((result) => {
         res.json(result);
       })
