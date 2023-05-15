@@ -19,7 +19,7 @@ class Bill {
   }
 
   getAllBill(req, res, next) {
-    BillModel.find({ status: "Uncheck" })
+    BillModel.find({ status: req.query.status })
       .sort({ date: -1 })
       .then((result) => {
         res.json(result);
