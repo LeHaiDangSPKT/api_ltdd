@@ -28,5 +28,15 @@ class Bill {
         res.json(err);
       });
   }
+
+  update(req, res, next) {
+    BillModel.updateOne({ _id: req.params.id }, req.body)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
 }
 module.exports = new Bill();
