@@ -17,5 +17,16 @@ class Bill {
     bill.save();
     res.json(bill);
   }
+
+  getAllBill(req, res, next) {
+    BillModel.find({ status: "Uncheck" })
+      .sort({ date: -1 })
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
 }
 module.exports = new Bill();
