@@ -12,6 +12,7 @@ class Review {
         const user = await UserModel.findOne({ _id: item.userId });
         arr.push({
           _id: item._id,
+          userId: item.userId,
           fullname: user.fullname,
           productId: item.productId,
           content: item.content,
