@@ -68,7 +68,12 @@ class User {
       $push: { productLove: req.body.productLove },
     })
       .then((result) => {
-        res.json(result);
+        res.json(
+          {
+            ...result,
+            productLove: result.productLove.push(req.body.productLove),
+          }._doc
+        );
       })
       .catch((err) => {
         res.json(err);
@@ -80,7 +85,14 @@ class User {
       $pull: { productLove: req.body.productLove },
     })
       .then((result) => {
-        res.json(result);
+        res.json(
+          {
+            ...result,
+            productLove: result.productLove.filter(
+              (item) => item != req.body.productLove
+            ),
+          }._doc
+        );
       })
       .catch((err) => {
         res.json(err);
