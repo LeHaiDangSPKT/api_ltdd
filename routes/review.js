@@ -9,5 +9,6 @@ router.get(
 );
 
 router.post("/add", ReviewController.add);
+router.get("/getAll", ReviewController.getAll);
 
 module.exports = router;
