@@ -10,10 +10,14 @@ class Review {
       const arr = [];
       for (const item of result) {
         const user = await UserModel.findOne({ _id: item.userId });
-        arr.push({ ...item._doc, fullname: user.fullname });
+        arr.push({
+          _id: item._id,
+          fullname: user.fullname,
+          productId: item.productId,
+          content: item.content,
+          time: item.time,
+        });
       }
-
-      console.log(arr);
       res.json(arr);
     } catch (err) {
       res.json(err);
